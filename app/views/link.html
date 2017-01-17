@@ -1,0 +1,51 @@
+
+    <div>{{doctor.name}}</div>
+    <div>{{doctor.description}}</div>
+    <div class="PageTitle">Pacient List</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Informatii</th>
+          <th>Programari</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="pacient in pacients" ng-include="getTemplate(pacient)">
+      </tr>
+    </table>
+    <a ui-sref="doctors">Doctori</a>
+    <div ng-click="arata()">Add a Pacient</div>
+    <form id="addPacientForm" name="addPacientForm">
+      <label for="pacientNume">Nume</label>
+      <input type="text" id="pacientNume" name="pacientNume" ng-model="pacient.pnume"/>
+       <label for="pacientInfo">Informatii</label>
+      <input type="text" id="pacientInfo" name="pacientInfo" ng-model="pacient.info"/> 
+            <label for="pacientProg"></label>
+      <input type="number" id="pacientProg" name="pacientProg" ng-model="pacient.programari" />
+      </br>
+      <input type="button" id="AddPacientButton" value="Add Pacient" ng-click="addPacient(pacient)" />
+      </form>
+
+    <script type="text/ng-template" id="display">
+      <td>{{pacient.pnume}}</td>
+      <td>{{pacient.info}}</td>
+      <td>{{pacient.programari}}</td>
+        <td>
+        <input type="button" value="delete" ng-click="deletePacient(pacient)" />
+        <input type="button" value="edit" ng-click="editPacient(pacient)" />
+      </td>
+    </script>
+    <script type="text/ng-template" id="edit">
+      <td><input type="text" ng-model="pacient.pnume" />  </td>
+      <td><input type="text" ng-model="pacient.info" /></td>
+      <td><input type="text" ng-model="pacient.programari" /></td>
+     
+      <td>
+        <input type="button" value="Save" ng-click="savePacient(pacient)" />
+        <input type="button" value="Cancel" ng-click="cancelEditing()" />
+      </td>
+    </script>
+
+  </div>
+</div>

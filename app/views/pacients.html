@@ -1,0 +1,23 @@
+
+        <div class="PageTitle">Pacienti</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Informatii</th>
+                    <th>Programare</th>
+                    <th>ID doctor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr ng-repeat="pacient in pacients" ng-include="getTemplate(pacient)">
+            </tr>
+        </table>
+        <script type="text/ng-template" id="display">
+            <td>{{pacient.pnume}}</td>
+            <td>{{pacient.info}}</td>
+            <td>{{pacient.programari}}</td>
+            <td>{{pacient.doctorId}}</td>
+        </script>
+    </div>
+</div>

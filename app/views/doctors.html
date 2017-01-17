@@ -1,0 +1,50 @@
+<div>
+    <!--acum facem pagina html pt a putea adauga un pacient pt asta vom avea nevoie de nu=iste tabele / formulare )-->
+	<h1>Add a new doctor</h1>
+	<div class="form-group">
+	    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class='nameColumn'>Name</th>
+                    <th class='Descriere'>Description</th>
+                    <th class='dreaptaButtons'></th>
+                </tr>
+            </thead>
+            <tr ng-repeat="doctor in doctors" ng-include="getTemplate(doctor)"></tr>
+        </table>
+        <div class="PageTitle">Add a Doctor</div>
+        <form name="addForm">
+            <label for="doctorName">Nume</label>
+            <input type="text" id="doctorName" name="doctorName" ng-model="doctor.name" required/>
+            <label for="doctorDescription">Descriere</label>
+            <input type="text" id="doctorDescription" name="doctorDescription" ng-model="doctor.description" required>
+            <input type="button" id="AddDoctorButton" value="Add Doctor" ng-Click="addDoctor(doctor)" />
+            <div class='space1'></div>
+        </form>
+        <script type="text/ng-template" id='display'>
+            <td class='nameColumn'>{{doctor.name}}</td>
+            <td class="Descriere">{{doctor.description}}</td>
+            <td class="dreaptaButtons">
+                <a ui-sref="link({doctorId: doctor.id})">Link</a>
+                <input type="button" value="delete" ng-click="deleteDoctor(doctor)" />
+                <input type="button" value="edit" ng-click="editDoctor(doctor)" />
+            </td>
+        </script>
+        <script type="text/ng-template" id="edit">
+            <td>
+                <input type="text" ng-model="doctor.name" />
+            </td>
+            <td>
+                <input type="text" ng-model="doctor.description" />
+            </td>
+            <td>
+                <input type="button" value="save" ng-click="saveDoctor(doctor)" />
+                <input type="button" value="cancel" ng-click="cancelEditing()" />
+            </td>
+        </script>
+</div>
+
+
+
+
+        
